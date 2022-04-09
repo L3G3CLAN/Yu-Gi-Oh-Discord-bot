@@ -131,8 +131,7 @@ client.once("ready", () => {
         `${process.env.STATUS}`,
         "-help",
         "-info",
-        "-serverinfo",
-        "-review"
+        "-serverinfo"
     ]
 
     let counter =0;

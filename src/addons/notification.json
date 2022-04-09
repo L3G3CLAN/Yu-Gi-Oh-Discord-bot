@@ -1,13 +1,13 @@
 {
-    "channel": "Notification Channel ID Here",
+    "channel": "906334156756226081",
 
-    "no_chaanel": "No Notification Chat Found!",
-    "notification_chat": "You can find your message in:",
+    "no_chaanel": "Geen notificatie-chat gevonden!",
+    "notification_chat": "U vindt uw bericht in:",
  
-    "no_msg": "No Message Provided!",
-    "title": "Notification by:",
-    "msg": "Notification:",
-    "footer": "notification addon",
+    "no_msg": "Geen bericht opgegeven!",
+    "title": "Melding door:",
+    "msg": "Malding:",
+    "footer": "melding addon",
 
-    "cmd_notification_disc": "Allows you to send a notification"
+    "cmd_notification_disc": "Hiermee kunt u een melding verzenden"
 }
