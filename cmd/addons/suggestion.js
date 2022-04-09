@@ -59,7 +59,7 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "suggestion",
+    name: "suggestie",
     category: "add ons",
     discription: suggestion.cmd_suggestion_disc
 }

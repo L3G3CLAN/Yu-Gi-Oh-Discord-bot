@@ -1,14 +1,14 @@
 {
-   "channel": "Suggestion Channel ID Here",
+   "channel": "962428761670844526",
 
-   "no_chaanel": "No Suggestion Chat Found!",
+   "no_chaanel": "Geen suggestie-chat gevonden!",
    "suggestie_chat": "Your Suggestion can be found in:",
 
 
-   "no_msg": "No Message Provided!",
-   "title": "Suggestion From:",
-   "msg": "Suggestion:",
-   "footer": "Suggestion addon",
+   "no_msg": "Geen bericht opgegeven!",
+   "title": "Suggestie van:",
+   "msg": "Suggestie:",
+   "footer": "Suggestie addon",
 
-   "cmd_suggestion_disc": "Here you can submit your idea."
+   "cmd_suggestion_disc": "Hier kunt u uw idee indienen."
 }

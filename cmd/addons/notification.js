@@ -55,7 +55,7 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "notification",
+    name: "melding",
     category: "admin",
     discription: notification.cmd_notification_disc
 }
