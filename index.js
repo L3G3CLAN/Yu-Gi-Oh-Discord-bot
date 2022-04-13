@@ -12,25 +12,25 @@ require('dotenv-flow').config();
 const mysql = require('mysql');
 
 const DB = mysql.createConnection({
-  host: process.env.DBHOST,
-  user: process.env.DBUSER,
-  password: process.env.DBPW,
-  database: process.env.DBNAME
+    host: process.env.DBHOST,
+    user: process.env.DBUSER,
+    password: process.env.DBPW,
+    database: process.env.DBNAME
 });
 
 //DB.connect(function(err) {
 //    if (err) throw err;
 //    console.log(`[\x1b[31m Connected To DataBase! \x1b[0m]`);
-    
-    //Table Create
-   // var sql = "CREATE TABLE SERVERINFO (JOIN_ROLL_ID VARCHAR(255), WELKOM_ID VARCHAR(255))";
-    
-   // DB.query(sql, function (err, result) {
-   //   if (err) throw err;
-   //   console.log(`[\x1b[31m Create Table! \x1b[0m]`);
-   // });
 
-   //Select Form Table
+//Table Create
+// var sql = "CREATE TABLE SERVERINFO (JOIN_ROLL_ID VARCHAR(255), WELKOM_ID VARCHAR(255))";
+
+// DB.query(sql, function (err, result) {
+//   if (err) throw err;
+//   console.log(`[\x1b[31m Create Table! \x1b[0m]`);
+// });
+
+//Select Form Table
 //    DB.query("SELECT JOIN_ROLL_ID FROM SERVERINFO", function (err, joinrollid, fields) {
 //        if (err) throw err;
 //        console.log(joinrollid);
@@ -134,7 +134,7 @@ client.once("ready", () => {
         "-serverinfo"
     ]
 
-    let counter =0;
+    let counter = 0;
 
     let time = 1 * 60 * 1000; //1000 = 1 Minut
 
@@ -148,10 +148,10 @@ client.once("ready", () => {
                     name: statusOptions[counter]
                 }
             ]
-    
+
         });
 
-        if(++counter >= statusOptions.length) counter = 0;
+        if (++counter >= statusOptions.length) counter = 0;
 
         setTimeout(updateStatus, time);
 
@@ -163,7 +163,7 @@ client.once("ready", () => {
     console.log([`${language.bot_online}`]);
     console.log(`[\x1b[31m ${language.bot_name} ${client.user.username} \x1b[0m]`);
     console.log('<---------------------------------------------------------------------------------------------------------------------->',);
-//    console.log([`${language.bot_name} ${client.user.username}`]);
+    //    console.log([`${language.bot_name} ${client.user.username}`]);
     console.log([`${language.bot_id} ${process.env.BOTID}`]);
     console.log([`${language.bot_preffix} ${process.env.PREFFIX}`]);
     console.log([`${language.bot_language} ${process.env.LANGUAGE}`]);
@@ -184,16 +184,16 @@ client.once("ready", () => {
 client.on("guildMemberAdd", member => {
 
     var welkomEmbed = new discord.MessageEmbed()
-    .setTitle(language.join_welkom_title)
-    .setDescription(`${process.env.SERVERNAME}`)
-    .setColor(process.env.COLLOR)
-    .setThumbnail(process.env.LOGO)
-    .setImage(process.env.BANNER)
-    .setTimestamp()
-    .setFooter(`${language.join_welkom} ${process.env.SERVERNAME}`)
-    .addFields(
-        { name: `${language.join_welkom}`, value: `${member}` }
-    )
+        .setTitle(language.join_welkom_title)
+        .setDescription(`${process.env.SERVERNAME}`)
+        .setColor(process.env.COLLOR)
+        .setThumbnail(process.env.LOGO)
+        .setImage(process.env.BANNER)
+        .setTimestamp()
+        .setFooter(`${language.join_welkom} ${process.env.SERVERNAME}`)
+        .addFields(
+            { name: `${language.join_welkom}`, value: `${member}` }
+        )
 
     var role = member.guild.roles.cache.get(process.env.JOINROLL);
 
@@ -247,28 +247,28 @@ client.on("messageCreate", async message => {
 
 client.on("interactionCreate", interaction => {
 
-    if(!interaction.isSelectMenu()){
+    if (!interaction.isSelectMenu()) {
         return;
     }
 
     const { customId, values, member } = interaction;
 
-    if(customId === 'dropdown'){
+    if (customId === 'dropdown') {
 
         const component = interaction.component;
-        
+
         //filter van wat er wel en niet is gekoozen
         const removed = component.options.filter((option) => {
             return !values.includes(option.value)
         });
 
         //roll verwijderen all hij niet is ge selecteerd.
-        for (var id of removed){
+        for (var id of removed) {
             member.roles.remove(id.value)
         }
 
         //roll toevoegen
-        for (var id of values){
+        for (var id of values) {
             member.roles.add(id)
         }
 
@@ -279,25 +279,28 @@ client.on("interactionCreate", interaction => {
 
     }
 
-        //regels-menu
-        if(customId === 'regels-menu'){
+    //regels-menu
+    if (customId === 'regels-menu') {
 
-            const regels = JSON.parse(fs.readFileSync(`./src/addons/regels.json`, "utf-8"));
+        const regels = JSON.parse(fs.readFileSync(`./src/addons/regels.json`, "utf-8"));
 
-            const component = interaction.component;
-            
-            //filter van wat er wel en niet is gekoozen
-            const removed = component.options.filter((option) => {
-                return !values.includes(option.value)
-            });
-    
-            //roll verwijderen all hij niet is ge selecteerd.
-            for (var id of removed){
-                member.roles.remove(id.value)
-            }
+        //Log chat
+        const adminlog = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
 
-            //kick embed
-            var embedKick = new discord.MessageEmbed()
+        const component = interaction.component;
+
+        //filter van wat er wel en niet is gekoozen
+        const removed = component.options.filter((option) => {
+            return !values.includes(option.value)
+        });
+
+        //roll verwijderen all hij niet is ge selecteerd.
+        for (var id of removed) {
+            member.roles.remove(id.value)
+        }
+
+        //kick embed
+        var embedKick = new discord.MessageEmbed()
             .setColor(process.env.BANCOLLOR)
             .setThumbnail(process.env.LOGO)
             .setImage(process.env.BANNER)
@@ -306,23 +309,23 @@ client.on("interactionCreate", interaction => {
             **${language.cmd_kick_kicken_reason}** ${regels.reden}`)
             .setFooter(client.name)
             .setTimestamp();
-    
-            //roll toevoegen
-            for (var id of values){
-                if(id === `${regels.wel_roll}`){
+
+        //roll toevoegen
+        for (var id of values) {
+            if (id === `${regels.wel_roll}`) {
                 member.roles.add(id)
-                } else if(id === `${regels.niet_roll}`){
-                    member.kick(regels.reden)
-                    return adminlog.send({ embeds: [embedKick] });
-                }
+            } else if (id === `${regels.niet_roll}`) {
+                member.kick(regels.reden)
+                return adminlog.send({ embeds: [embedKick] });
             }
-    
-            interaction.reply({
-                content: "Je Heb De Regels Ge Accepteert.",
-                ephemeral: true
-            });
-    
         }
+
+        interaction.reply({
+            content: "Je Heb De Regels Ge Accepteert.",
+            ephemeral: true
+        });
+
+    }
 
 });
 
