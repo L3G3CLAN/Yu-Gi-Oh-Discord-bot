@@ -297,18 +297,7 @@ client.on("interactionCreate", interaction => {
         for (var id of removed) {
             member.roles.remove(id.value)
         }
-
-        //kick embed
-        var embedKick = new discord.MessageEmbed()
-            .setColor(process.env.BANCOLLOR)
-            .setThumbnail(process.env.LOGO)
-            .setImage(process.env.BANNER)
-            .setDescription(`**${language.cmd_kick_kicken_disc}** ${member} (${member.id})
-            **${language.cmd_kick_kicken_by}** ${client.name}
-            **${language.cmd_kick_kicken_reason}** ${regels.reden}`)
-            .setFooter(client.name)
-            .setTimestamp();
-
+        
         //roll toevoegen
         for (var id of values) {
             if (id === `${regels.wel_roll}`) {
