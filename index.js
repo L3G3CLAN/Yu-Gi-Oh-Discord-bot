@@ -295,6 +295,17 @@ client.on("interactionCreate", interaction => {
             for (var id of removed){
                 member.roles.remove(id.value)
             }
+
+            //kick embed
+            var embedKick = new discord.MessageEmbed()
+            .setColor(process.env.BANCOLLOR)
+            .setThumbnail(process.env.LOGO)
+            .setImage(process.env.BANNER)
+            .setDescription(`**${language.cmd_kick_kicken_disc}** ${kickUser} (${kickUser.id})
+            **${language.cmd_kick_kicken_by}** ${message.author}
+            **${language.cmd_kick_kicken_reason}** ${reason}`)
+            .setFooter(message.member.displayName)
+            .setTimestamp();
     
             //roll toevoegen
             for (var id of values){
@@ -302,6 +313,7 @@ client.on("interactionCreate", interaction => {
                 member.roles.add(id)
                 } else if(id === `${regels.niet_roll}`){
                     member.kick(regels.reden)
+                    return adminlog.send({ embeds: [embedKick] });
                 }
             }
     
