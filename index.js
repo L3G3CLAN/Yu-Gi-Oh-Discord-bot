@@ -279,13 +279,14 @@ client.on("interactionCreate", interaction => {
 
     }
 
-    //Log chat
-    const adminlog = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
+
 
     //regels-menu
     if (customId === 'regels-menu') {
 
         const regels = JSON.parse(fs.readFileSync(`./src/addons/regels.json`, "utf-8"));
+
+        const log = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
 
         const component = interaction.component;
 
@@ -316,7 +317,7 @@ client.on("interactionCreate", interaction => {
                 member.roles.add(id)
             } else if (id === `${regels.niet_roll}`) {
                 member.kick(regels.reden)
-                return adminlog.send({ embeds: [embedKick] });
+                return log.send({ embeds: [embedKick] });
             }
         }
 
