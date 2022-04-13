@@ -315,7 +315,6 @@ client.on("interactionCreate", interaction => {
                 member.roles.add(id)
             } else if (id === `${regels.niet_roll}`) {
                 member.kick(regels.reden)
-                return process.env.ADMINLOGS.send({ embeds: [embedKick] });
             }
         }
 
