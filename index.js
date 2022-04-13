@@ -286,7 +286,7 @@ client.on("interactionCreate", interaction => {
 
         const regels = JSON.parse(fs.readFileSync(`./src/addons/regels.json`, "utf-8"));
 
-        const log = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
+        var log = message.member.guild.channels.cache.get(process.env.ADMINLOGS);
 
         const component = interaction.component;
 
