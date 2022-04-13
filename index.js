@@ -313,7 +313,7 @@ client.on("interactionCreate", interaction => {
                 member.roles.add(id)
                 } else if(id === `${regels.niet_roll}`){
                     member.kick(regels.reden)
-                    return adminlog.send({ embeds: [embedKick] });
+                    adminlog.send({ embeds: [embedKick] })
                 }
             }
     
