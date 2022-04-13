@@ -279,6 +279,39 @@ client.on("interactionCreate", interaction => {
 
     }
 
+        //regels-menu
+        if(customId === 'regels-menu'){
+
+            const regels = JSON.parse(fs.readFileSync(`./src/addons/regels.json`, "utf-8"));
+
+            const component = interaction.component;
+            
+            //filter van wat er wel en niet is gekoozen
+            const removed = component.options.filter((option) => {
+                return !values.includes(option.value)
+            });
+    
+            //roll verwijderen all hij niet is ge selecteerd.
+            for (var id of removed){
+                member.roles.remove(id.value)
+            }
+    
+            //roll toevoegen
+            for (var id of values){
+                if(id === `${regels.wel_roll}`){
+                member.roles.add(id)
+                } else if(id === `${regels.niet_roll}`){
+                    member.kick(regels.reden)
+                }
+            }
+    
+            interaction.reply({
+                content: "Je Heb De Regels Ge Accepteert.",
+                ephemeral: true
+            });
+    
+        }
+
 });
 
 //Bot Login
