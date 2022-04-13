@@ -286,8 +286,6 @@ client.on("interactionCreate", interaction => {
 
         const regels = JSON.parse(fs.readFileSync(`./src/addons/regels.json`, "utf-8"));
 
-        const log = guild.channels.cache.get(process.env.ADMINLOGS);
-
         const component = interaction.component;
 
         //filter van wat er wel en niet is gekoozen
@@ -317,7 +315,7 @@ client.on("interactionCreate", interaction => {
                 member.roles.add(id)
             } else if (id === `${regels.niet_roll}`) {
                 member.kick(regels.reden)
-                return log.send({ embeds: [embedKick] });
+                return process.env.ADMINLOGS.send({ embeds: [embedKick] });
             }
         }
 
