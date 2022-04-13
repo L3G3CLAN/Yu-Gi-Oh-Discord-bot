@@ -301,9 +301,9 @@ client.on("interactionCreate", interaction => {
             .setColor(process.env.BANCOLLOR)
             .setThumbnail(process.env.LOGO)
             .setImage(process.env.BANNER)
-            .setDescription(`**${language.cmd_kick_kicken_disc}** ${kickUser} (${kickUser.id})
+            .setDescription(`**${language.cmd_kick_kicken_disc}** ${member} (${member.id})
             **${language.cmd_kick_kicken_by}** ${message.author}
-            **${language.cmd_kick_kicken_reason}** ${reason}`)
+            **${language.cmd_kick_kicken_reason}** ${regels.reden}`)
             .setFooter(message.member.displayName)
             .setTimestamp();
     
