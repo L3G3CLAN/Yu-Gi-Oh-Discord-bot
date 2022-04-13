@@ -304,7 +304,7 @@ client.on("interactionCreate", interaction => {
             .setDescription(`**${language.cmd_kick_kicken_disc}** ${member} (${member.id})
             **${language.cmd_kick_kicken_by}** ${client.name}
             **${language.cmd_kick_kicken_reason}** ${regels.reden}`)
-            .setFooter(message.member.displayName)
+            .setFooter(client.displayName)
             .setTimestamp();
     
             //roll toevoegen
